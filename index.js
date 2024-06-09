@@ -13,7 +13,6 @@ import RutaMunicipios from "./src/routes/municipios.route.js";
 import routeTipoAnalisis from "./src/routes/route.tipoAnalisis.js";
 import routeReportes from "./src/routes/route.reporte.js";
 import cors from 'cors'
-import { PORT } from "./config.js";
 
 const servidor = express();
 
@@ -47,6 +46,6 @@ servidor.get('/document', (req, res) => {
 })
 
 //listen 
-servidor.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+servidor.listen(3000, '0.0.0.0', () => {
+    console.log('Servidor rodando na porta 3000');
 });
