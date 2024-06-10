@@ -374,7 +374,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`identificacion`, `telefono`, `nombre`, `correo_electronico`, `tipo_usuario`, `password`, `estado`) VALUES
-(1080, '3154051769', 'Luis Ubaque', 'luis@gmail.com', 'admin', 'luis123', 'inactivo'),
+(1, '1', '1', '1', 'admin', '1', 'activo'),
+(2, '2', '2', '2', 'catador', '2', 'activo'),
+(3, '3', '3', '3', 'caficultor', '3', 'activo'),
 (12230, '31011111', 'Juan', 'juan@gmail.com', '', 'juan123', 'activo'),
 (12235, '3102934', 'Lucia', 'lucia@gmail.com', '', 'lucia123', 'activo'),
 (12239, '3101985', 'Juan Carlos Diaz', 'juan@gmail.com', 'catador', 'juan123', 'activo'),
