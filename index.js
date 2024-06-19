@@ -14,6 +14,7 @@ import routeTipoAnalisis from "./src/routes/route.tipoAnalisis.js";
 import routeReportes from "./src/routes/route.reporte.js";
 import cors from 'cors'
 import { PORT } from "./config.js";
+import routerGraficas from "./src/routes/router.graficas.js";
 
 const servidor = express();
 
@@ -34,6 +35,7 @@ servidor.use('/resultados', routeResultados)
 servidor.use('/municipios', RutaMunicipios)
 servidor.use('/tipoanalisis', routeTipoAnalisis)
 servidor.use('/reportes', routeReportes)
+servidor.use(routerGraficas)
 servidor.use(rutaValidacion)
 
 servidor.set('view engine', 'ejs')
