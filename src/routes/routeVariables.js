@@ -5,14 +5,14 @@ import { validarToken } from "../controllers/seguridad.controller.js";
 
 const routeVariables = Router()
 
-routeVariables.get("/listarvariable", validarToken, listarVariables)
+routeVariables.get("/listar", validarToken, listarVariables)
 
-routeVariables.post("/crearvariable",/* validarToken, */ /* validacionVariable, */CrearVariable)
+routeVariables.post("/crear",/* validarToken, */ /* validacionVariable, */CrearVariable)
 
-routeVariables.put("/actualizarvariable/:codigo",validarToken, ActualizarVariable)
-routeVariables.put("/desactivarVariable/:codigo",validarToken, desactivarVariable)
-routeVariables.put("/activarVariable/:codigo",validarToken, activarVariable)
-routeVariables.get("/buscarvariable/:codigo",validarToken, buscarvariable)
+routeVariables.put("/actualizar/:codigo",validarToken, ActualizarVariable)
+routeVariables.put("/desactivar/:codigo",validarToken, desactivarVariable)
+routeVariables.put("/activar/:codigo",validarToken, activarVariable)
+routeVariables.get("/buscar/:codigo",validarToken, buscarvariable)
 routeVariables.get("/activas",validarToken, variablesActivas)
 
 
