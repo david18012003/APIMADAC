@@ -4,7 +4,7 @@ import {validationResult} from 'express-validator'
 export const getFincas = async (req, res) => {
     try {
         const query = `
-            SELECT f.codigo, f.nombre_finca, f.dimension_mt2, u.nombre AS fk_caficultor, m.nombre AS municipio, f.vereda, f.estado
+            SELECT f.codigo, f.nombre_finca, f.dimension_mt2, u.nombre AS fk_caficultor, u.identificacion, m.nombre AS municipio, m.id_municipio, f.vereda, f.estado
             FROM fincas f
             JOIN usuarios u ON f.fk_caficultor = u.identificacion
             JOIN municipios AS m ON municipio = id_municipio
@@ -16,7 +16,7 @@ export const getFincas = async (req, res) => {
         } else {
             res.status(404).json({
                 message: "No se encontraron fincas"
-            });
+            });z
         }
     } catch (error) {
         res.status(500).json({
@@ -42,37 +42,6 @@ export const getFinca = async (req,res)=>{
                 message: "No se encontraron fincas"
             });
         }
-    } catch (error) {
-        res.status(500).json({
-            message: "Error en el servidor: " + error
-        });
-    }
-};
-
-export const getBuscarIdCaficultor = async (req, res) => {
-    try {
-        const { fk_caficultor} = req.params;
-
-        const [usuario] = await pool.query(
-            `SELECT tipo_usuario FROM usuarios WHERE identificacion = ?`,
-            [fk_caficultor]
-        );
-
-        if (usuario[0].tipo_usuario == 'caficultor') {
-            const [rows] = await pool.query(`
-            SELECT f.codigo, f.nombre_finca, f.dimension_mt2, u.nombre AS fk_caficultor, m.nombre AS municipio, f.vereda, f.estado
-            FROM fincas f
-            JOIN usuarios u ON f.fk_caficultor = u.identificacion
-            JOIN municipios AS m ON f.municipio = m.id_municipio
-            WHERE f.fk_caficultor = ?
-        `, [fk_caficultor]);
-            res.status(200).json(rows);
-        }else{
-            res.status(404).json({
-                message: "tu no eres caficultor"
-            });
-        }
-       
     } catch (error) {
         res.status(500).json({
             message: "Error en el servidor: " + error

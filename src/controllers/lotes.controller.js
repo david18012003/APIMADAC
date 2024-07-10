@@ -4,8 +4,9 @@ import { validationResult } from 'express-validator'
 
 export const getLotes = async (req, res) => {
     try {
-        const [rows]=await pool.query(`SELECT l.codigo, l.numero_arboles, l.fk_finca, v.nombre AS fk_variedad, l.estado
+        const [rows]=await pool.query(`SELECT l.codigo, l.numero_arboles, l.fk_finca, f.nombre_finca, v.nombre AS fk_variedad, v.codigo AS codeVariedad, l.estado
         FROM lotes l
+        LEFT JOIN fincas f ON l.fk_finca = f.codigo
         LEFT JOIN variedades v ON l.fk_variedad = v.codigo`)
       
         if (rows.length > 0) {
@@ -89,32 +90,6 @@ export const desactivar_Lotes=async(req,res)=>{
         })
     }
 }
-
-export const buscarIdFinca = async (req, res) => {
-    try {
-        const { fk_finca } = req.params;
-        const [rows] = await pool.query(`
-            SELECT l.codigo, l.numero_arboles, l.fk_finca, f.nombre_finca AS finca_nombre, v.nombre AS fk_variedad, l.estado
-            FROM lotes l
-            LEFT JOIN variedades v ON l.fk_variedad = v.codigo
-            LEFT JOIN fincas f ON l.fk_finca = f.codigo
-            WHERE l.fk_finca = ?
-        `, [fk_finca]);
-
-        if (rows.length > 0) {
-            res.status(200).json(rows);
-        } else {
-            res.status(404).json({
-                message: "No se encontró ningun lote al nombre de esa finca"
-            });
-        }
-    } catch (error) {
-        res.status(500).json({
-            message: "Error en el servidor: " + error
-        });
-    }
-};
-
 
 export const activarLotes = async (req, res) => {
     try {
