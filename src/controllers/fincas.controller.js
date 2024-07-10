@@ -194,7 +194,7 @@ export const getBuscarIdCaficultor = async (req, res) => {
             res.status(200).json(rows);
         }else{
             res.status(404).json({
-                message: "tu no eres caficultor"
+                message: "Tu no eres caficultor"
             });
         }
        
