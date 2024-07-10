@@ -199,7 +199,7 @@ export const getBuscarIdCaficultor = async (req, res) => {
        
     } catch (error) {
         res.status(500).json({
-            message: "Error en el servidor: " + error
+            message: "Error en el servidor: "+error
         });
     }
 };
