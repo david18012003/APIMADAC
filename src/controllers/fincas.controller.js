@@ -173,6 +173,7 @@ export const fincasActivas = async (req, res) => {
         });
     }
 }
+// lo vamos a usar para el perfil de la vistade los usuarios en la app movil
 export const getBuscarIdCaficultor = async (req, res) => {
     try {
         const {fk_caficultor} = req.params;
