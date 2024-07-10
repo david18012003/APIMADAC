@@ -8,14 +8,14 @@ const RouteMuestras = Router();
 
 //localhost:3000/actualizarMuestra
 
-RouteMuestras.get("/listar", validarToken, listarMuestras);
+RouteMuestras.get("/listarMuestra", validarToken, listarMuestras);
 //validation datos 
-RouteMuestras.post("/crear",validarToken, CrearMuestra);
+RouteMuestras.post("/crearMuestra",validarToken, CrearMuestra);
 
-RouteMuestras.put("/actualizar/:codigo",validarToken, actualizarMuestra);
-RouteMuestras.put("/desactivar/:codigo",validarToken, desactivarMuestras)
-RouteMuestras.put("/activar/:codigo",validarToken, activarMuestras)
-RouteMuestras.get("/buscar/:codigo",validarToken, BuscarMuestra);
+RouteMuestras.put("/actualizarMuestra/:codigo",validarToken, actualizarMuestra);
+RouteMuestras.put("/desactivarMuestra/:codigo",validarToken, desactivarMuestras)
+RouteMuestras.put("/activarMuestra/:codigo",validarToken, activarMuestras)
+RouteMuestras.get("/buscarmuestra/:codigo",validarToken, BuscarMuestra);
 RouteMuestras.get("/activas",validarToken, muestrasActivas);
 RouteMuestras.get("/table",validarToken, muestrasTable);
 
