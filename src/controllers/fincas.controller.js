@@ -175,7 +175,7 @@ export const fincasActivas = async (req, res) => {
 }
 export const getBuscarIdCaficultor = async (req, res) => {
     try {
-        const { fk_caficultor} = req.params;
+        const {fk_caficultor} = req.params;
 
         const [usuario] = await pool.query(
             `SELECT tipo_usuario FROM usuarios WHERE identificacion = ?`,
